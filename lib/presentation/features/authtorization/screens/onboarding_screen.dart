@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lesson_6/core/colors/app_colors.dart';
 import 'package:lesson_6/core/fonts/app_fonts.dart';
 import 'package:lesson_6/presentation/common_widgets/app_bottun.dart';
 import 'package:lesson_6/presentation/features/authtorization/widgets/onboarding_item_widget.dart';
