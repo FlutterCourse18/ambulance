@@ -19,9 +19,8 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _phoneController =
-      TextEditingController(text: '');
-  final int code = Random().nextInt(8999) + 1000;
+  final TextEditingController _phoneController = TextEditingController(text: '');
+  final int _code = Random().nextInt(8999) + 1000;
   String? _errorText;
 
   var maskFormatter = MaskTextInputFormatter(
@@ -40,13 +39,7 @@ class _LoginFormState extends State<LoginForm> {
       setState(() {
         _errorText = 'Поле не может быть пустым';
       });
-    }
-    // else if (input.length < 16) {
-    //   setState(() {
-    //     _errorText = 'Too short';
-    //   });
-    // }
-    else if (!isPhoneNumberValid(value)) {
+    } else if (!isPhoneNumberValid(value)) {
       setState(() {
         _errorText = 'Введите действительный номер телефона';
       });
@@ -66,7 +59,7 @@ class _LoginFormState extends State<LoginForm> {
       print(action);
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('$code')));
+          .showSnackBar(SnackBar(content: Text('$_code')));
     }
   }
 
