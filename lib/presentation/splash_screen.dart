@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lesson_6/presentation/features/authtorization/screens/onboarding_screen.dart';
+import 'package:ambulance/core/consts/app_consts.dart';
+import 'package:ambulance/presentation/features/authtorization/screens/login_screen.dart';
+import 'package:ambulance/presentation/features/authtorization/screens/onboarding_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -9,13 +12,32 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  void routing() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const OnBoardingScreen(),
+  void routing() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final bool isFirstEnter = prefs.getBool(AppConsts.isFirstEnter) ?? true;
+    print(isFirstEnter);
+    await Future.delayed(
+      const Duration(
+        seconds: 2,
       ),
     );
+    if (isFirstEnter) {
+      // ignore: use_build_context_synchronously
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const OnBoardingScreen(),
+        ),
+      );
+    } else {
+      // ignore: use_build_context_synchronously
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LogInScreen(),
+        ),
+      );
+    }
   }
 
   @override

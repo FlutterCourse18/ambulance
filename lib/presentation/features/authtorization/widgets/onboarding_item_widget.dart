@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lesson_6/core/fonts/app_fonts.dart';
-import 'package:lesson_6/core/images/app_images.dart';
+import 'package:ambulance/core/fonts/app_fonts.dart';
+import 'package:ambulance/core/images/app_images.dart';
 
 class OnBoardingItemWidget extends StatelessWidget {
   const OnBoardingItemWidget({

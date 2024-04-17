@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lesson_6/core/colors/app_colors.dart';
-import 'package:lesson_6/core/fonts/app_fonts.dart';
+import 'package:ambulance/core/colors/app_colors.dart';
+import 'package:ambulance/core/fonts/app_fonts.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({
@@ -22,6 +21,7 @@ class AppButton extends StatelessWidget {
         width: 296.w,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
+            disabledBackgroundColor: AppColors.grayAF,
             backgroundColor: AppColors.blue,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.r),

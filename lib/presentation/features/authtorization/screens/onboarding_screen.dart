@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lesson_6/core/fonts/app_fonts.dart';
-import 'package:lesson_6/presentation/common_widgets/app_bottun.dart';
-import 'package:lesson_6/presentation/features/authtorization/widgets/onboarding_item_widget.dart';
+import 'package:ambulance/core/consts/app_consts.dart';
+import 'package:ambulance/core/fonts/app_fonts.dart';
+import 'package:ambulance/presentation/common_widgets/app_bottun.dart';
+import 'package:ambulance/presentation/features/authtorization/screens/login_screen.dart';
+import 'package:ambulance/presentation/features/authtorization/widgets/onboarding_item_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -41,7 +44,19 @@ class OnBoardingScreen extends StatelessWidget {
             ),
             AppButton(
               title: 'Войти',
-              onPressed: () {},
+              onPressed: () async {
+                final SharedPreferences prefs =
+                    await SharedPreferences.getInstance();
+                await prefs.setBool(AppConsts.isFirstEnter, false);
+
+                // ignore: use_build_context_synchronously
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LogInScreen(),
+                  ),
+                );
+              },
             )
           ],
         ),
