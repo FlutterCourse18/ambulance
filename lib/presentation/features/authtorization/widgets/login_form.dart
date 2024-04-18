@@ -1,10 +1,12 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, use_build_context_synchronously
 
 import 'dart:math';
 
 import 'package:ambulance/core/colors/app_colors.dart';
+import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
 import 'package:ambulance/presentation/common_widgets/app_bottun.dart';
+import 'package:ambulance/presentation/features/authtorization/screens/number_confirm_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -19,8 +21,8 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _phoneController = TextEditingController(text: '');
-  final int _code = Random().nextInt(8999) + 1000;
+  final TextEditingController _phoneController =
+      TextEditingController(text: '');
   String? _errorText;
 
   var maskFormatter = MaskTextInputFormatter(
@@ -35,7 +37,7 @@ class _LoginFormState extends State<LoginForm> {
 
   void _validatePhone(String value) {
     final input = _phoneController.value.text;
-    if (input.length <= 1) {
+    if (input.isEmpty) {
       setState(() {
         _errorText = 'Поле не может быть пустым';
       });
@@ -52,14 +54,25 @@ class _LoginFormState extends State<LoginForm> {
 
   void _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      print('tel: ${_phoneController.text}');
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString('tel', _phoneController.text);
-      final String? action = prefs.getString('tel');
+      await prefs.setString(AppConsts.phoneNumber, _phoneController.text);
+      final String? action = prefs.getString(AppConsts.phoneNumber);
       print(action);
-      // ignore: use_build_context_synchronously
+      final String code = (Random().nextInt(8999) + 1000).toString();
+      await prefs.setString(AppConsts.confirmCode, code);
+      final String? genCode = prefs.getString(AppConsts.confirmCode);
+      print(genCode);
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('$_code')));
+          .showSnackBar(SnackBar(content: Text(code)));
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const NumberConfirmScreen(),
+        ),
+      );
+      setState(() {
+        _phoneController.text = '';
+      });
     }
   }
 
@@ -107,7 +120,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
             AppButton(
               title: 'Далее',
-              onPressed: _phoneController.text.length > 1 ? _submitForm : null,
+              onPressed: _phoneController.text.isNotEmpty ? _submitForm : null,
             )
           ],
         ),

@@ -19,6 +19,8 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               fontFamily: 'SF Pro Display',
+              colorScheme:
+                  ThemeData().colorScheme.copyWith(primary: AppColors.blue),
               appBarTheme: AppBarTheme(
                 elevation: 0.7.h,
                 shadowColor: AppColors.black.withOpacity(0.30),

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/presentation/features/authtorization/screens/login_screen.dart';

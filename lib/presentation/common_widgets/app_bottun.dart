@@ -28,12 +28,19 @@ class AppButton extends StatelessWidget {
             ),
           ),
           onPressed: onPressed,
-          child: Text(
-            title,
-            style: AppFonts.s18w600.copyWith(
-              color: AppColors.white,
-            ),
-          ),
+          child: onPressed != null
+              ? Text(
+                  title,
+                  style: AppFonts.s18w600.copyWith(
+                    color: AppColors.white,
+                  ),
+                )
+              : Text(
+                  title,
+                  style: AppFonts.s18w600.copyWith(
+                    color: AppColors.gray75,
+                  ),
+                ),
         ),
       ),
     );
