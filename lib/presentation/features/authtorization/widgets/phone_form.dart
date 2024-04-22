@@ -5,24 +5,23 @@ import 'dart:math';
 import 'package:ambulance/core/colors/app_colors.dart';
 import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
-import 'package:ambulance/presentation/common_widgets/app_bottun.dart';
-import 'package:ambulance/presentation/features/authtorization/screens/number_confirm_screen.dart';
+import 'package:ambulance/presentation/common_widgets/app_button.dart';
+import 'package:ambulance/presentation/features/authtorization/screens/confirm_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+class PhoneForm extends StatefulWidget {
+  const PhoneForm({super.key});
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<PhoneForm> createState() => _PhoneFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _PhoneFormState extends State<PhoneForm> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _phoneController =
-      TextEditingController(text: '');
+  final TextEditingController _phoneController = TextEditingController();
   String? _errorText;
 
   var maskFormatter = MaskTextInputFormatter(
@@ -36,23 +35,42 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void _validatePhone(String value) {
-    final input = _phoneController.value.text;
-    if (input.isEmpty) {
-      setState(() {
+    setState(() {
+      final input = _phoneController.value.text;
+      if (input.isEmpty) {
         _errorText = 'Поле не может быть пустым';
-      });
-    } else if (!isPhoneNumberValid(value)) {
-      setState(() {
+      } else if (!isPhoneNumberValid(value)) {
         _errorText = 'Введите действительный номер телефона';
-      });
-    } else {
-      setState(() {
+      } else {
         _errorText = null;
+      }
+    });
+  }
+
+  void _submitForm() async {
+    if (_formKey.currentState!.validate()) {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString(AppConsts.phoneNumber, _phoneController.text);
+      // final String? action = prefs.getString(AppConsts.phoneNumber);
+      // print(action);
+      final String code = (Random().nextInt(8999) + 1000).toString();
+      await prefs.setString(AppConsts.confirmCode, code);
+      // final String? genCode = prefs.getString(AppConsts.confirmCode);
+      // print(genCode);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(code)));
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const NumberConfirmScreen(),
+        ),
+      );
+      setState(() {
+        _phoneController.text = '';
       });
     }
   }
 
-  void _submitForm() async {
+  void onFieldSubmitted(String text) async {
     if (_formKey.currentState!.validate()) {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString(AppConsts.phoneNumber, _phoneController.text);
@@ -62,8 +80,7 @@ class _LoginFormState extends State<LoginForm> {
       await prefs.setString(AppConsts.confirmCode, code);
       final String? genCode = prefs.getString(AppConsts.confirmCode);
       print(genCode);
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(code)));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(code)));
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -95,7 +112,9 @@ class _LoginFormState extends State<LoginForm> {
               keyboardType: TextInputType.phone,
               validator: (value) => _errorText,
               onChanged: _validatePhone,
+              onFieldSubmitted: onFieldSubmitted,
               maxLength: 16,
+              textInputAction: TextInputAction.next,
               decoration: InputDecoration(
                 counterText: '',
                 hintText: '0 (_ _ _) _ _-_ _-_ _',

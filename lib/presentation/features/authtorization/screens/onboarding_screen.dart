@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
-import 'package:ambulance/presentation/common_widgets/app_bottun.dart';
+import 'package:ambulance/presentation/common_widgets/app_button.dart';
 import 'package:ambulance/presentation/features/authtorization/screens/login_screen.dart';
 import 'package:ambulance/presentation/features/authtorization/widgets/onboarding_item_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';

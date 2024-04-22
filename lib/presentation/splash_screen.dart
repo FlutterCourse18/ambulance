@@ -17,10 +17,10 @@ class _SplashScreenState extends State<SplashScreen> {
   void routing() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final bool isFirstEnter = prefs.getBool(AppConsts.isFirstEnter) ?? true;
-    print(isFirstEnter);
+    print('isFirstEnter: $isFirstEnter');
     await Future.delayed(
       const Duration(
-        seconds: 2,
+        seconds: 1,
       ),
     );
     if (isFirstEnter) {

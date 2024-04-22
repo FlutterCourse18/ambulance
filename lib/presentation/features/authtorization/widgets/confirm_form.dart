@@ -5,23 +5,80 @@ import 'dart:math';
 import 'package:ambulance/core/colors/app_colors.dart';
 import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
-import 'package:ambulance/presentation/common_widgets/app_bottun.dart';
+import 'package:ambulance/presentation/common_widgets/app_button.dart';
+import 'package:ambulance/presentation/features/authtorization/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CodeTextField extends StatefulWidget {
-  const CodeTextField({
+class ConfirmForm extends StatefulWidget {
+  const ConfirmForm({
     super.key,
   });
 
   @override
-  State<CodeTextField> createState() => _CodeTextFieldState();
+  State<ConfirmForm> createState() => _ConfirmFormState();
 }
 
-class _CodeTextFieldState extends State<CodeTextField> {
+class _ConfirmFormState extends State<ConfirmForm> {
   final TextEditingController _codeController = TextEditingController();
   String? _errorText;
+
+  void generateCode() async {
+    final String code = (Random().nextInt(8999) + 1000).toString();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(AppConsts.confirmCode, code);
+    // final String? genCode = prefs.getString(AppConsts.confirmCode);
+    // print(genCode);
+    // print(_codeController.text);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(code)));
+  }
+
+  void clearTextField() {
+    setState(() {
+      _codeController.clear();
+    });
+  }
+
+  void submitForm() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String confirmCode = prefs.getString(AppConsts.confirmCode) ?? '';
+    if (_codeController.text == confirmCode) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const RegistrationScreen(),
+        ),
+      );
+      setState(() {
+        _codeController.text = '';
+      });
+    } else {
+      setState(() {
+        _errorText = 'неверный код';
+      });
+    }
+  }
+
+  void onSubmitted(String text) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String confirmCode = prefs.getString(AppConsts.confirmCode) ?? '';
+    if (_codeController.text == confirmCode) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const RegistrationScreen(),
+        ),
+      );
+      setState(() {
+        _codeController.clear();
+      });
+    } else {
+      setState(() {
+        _errorText = 'неверный код';
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +87,14 @@ class _CodeTextFieldState extends State<CodeTextField> {
         TextField(
           controller: _codeController,
           keyboardType: TextInputType.number,
-          // onChanged: _validatePhone,
           maxLength: 4,
           obscureText: true,
           obscuringCharacter: "*",
           enableSuggestions: false,
           autocorrect: false,
+          onSubmitted: onSubmitted,
           decoration: InputDecoration(
             errorText: _errorText,
-
             prefixIcon: ConstrainedBox(
               constraints: BoxConstraints(
                 maxWidth: 120.w,
@@ -55,11 +111,7 @@ class _CodeTextFieldState extends State<CodeTextField> {
               ),
             ),
             suffixIcon: IconButton(
-              onPressed: () {
-                setState(() {
-                  _codeController.clear();
-                });
-              },
+              onPressed: clearTextField,
               color: AppColors.black,
               icon: SizedBox(
                 width: 35.w,
@@ -90,17 +142,7 @@ class _CodeTextFieldState extends State<CodeTextField> {
           height: 25.h,
         ),
         InkWell(
-          onTap: () async {
-            final String code = (Random().nextInt(8999) + 1000).toString();
-            final SharedPreferences prefs =
-                await SharedPreferences.getInstance();
-            await prefs.setString(AppConsts.confirmCode, code);
-            // final String? genCode = prefs.getString(AppConsts.confirmCode);
-            // print(genCode);
-            // print(_codeController.text);
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(code)));
-          },
+          onTap: generateCode,
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
           child: Text(
@@ -117,23 +159,7 @@ class _CodeTextFieldState extends State<CodeTextField> {
         ),
         AppButton(
           title: 'Далее',
-          onPressed: () async {
-            final SharedPreferences prefs =
-                await SharedPreferences.getInstance();
-            final String confirmCode =
-                prefs.getString(AppConsts.confirmCode) ?? '';
-            final String phoneNumber =
-                prefs.getString(AppConsts.phoneNumber) ?? '';
-            if (_codeController.text == confirmCode) {
-              _codeController.text = '';
-              ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Welcome $phoneNumber')));
-            } else {
-              setState(() {
-                _errorText = 'неверный код';
-              });
-            }
-          },
+          onPressed: submitForm,
         )
       ],
     );
