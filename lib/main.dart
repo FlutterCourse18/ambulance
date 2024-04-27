@@ -1,4 +1,3 @@
-import 'package:ambulance/presentation/features/home_page/bottom_bar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ambulance/core/colors/app_colors.dart';
@@ -23,14 +22,13 @@ class MyApp extends StatelessWidget {
               colorScheme:
                   ThemeData().colorScheme.copyWith(primary: AppColors.blue),
               appBarTheme: AppBarTheme(
-                elevation: 0.7.h,
-                shadowColor: AppColors.black.withOpacity(0.30),
-                backgroundColor: AppColors.white,
+                elevation: 1.h,
+                shadowColor: AppColors.black.withOpacity(0.5),
+                surfaceTintColor: AppColors.white,
               ),
               scaffoldBackgroundColor: AppColors.white,
             ),
-            // home: const SplashScreen(),
-            home: const HomeHage(),
+            home: const SplashScreen(),
           );
         });
   }

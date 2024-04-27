@@ -1,12 +1,10 @@
 import 'dart:io';
 
 import 'package:ambulance/core/colors/app_colors.dart';
-import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class CircleAvatarPicker extends StatefulWidget {
   const CircleAvatarPicker({
@@ -45,13 +43,9 @@ class _CircleAvatarPickerState extends State<CircleAvatarPicker> {
 
     file = await ImagePicker()
         .pickImage(source: isCamera ? ImageSource.camera : ImageSource.gallery);
-    // final SharedPreferences prefs = await SharedPreferences.getInstance();
-    // await prefs.setString(AppConsts.userAvatar, file!.path);
-    // userAvatar = prefs.getString(AppConsts.userAvatar);
     setState(() {});
   }
 
-  // String? userAvatar;
   XFile? file;
 
   @override
