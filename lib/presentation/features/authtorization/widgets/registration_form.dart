@@ -4,7 +4,8 @@ import 'package:ambulance/core/colors/app_colors.dart';
 import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
 import 'package:ambulance/presentation/common_widgets/app_button.dart';
-import 'package:ambulance/presentation/features/profile/screens/profile_screen.dart';
+import 'package:ambulance/presentation/features/home_page/bottom_bar_screen.dart';
+import 'package:ambulance/presentation/features/home_page/profile/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -68,7 +69,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => const ProfileScreen(),
+          builder: (context) => const HomeHage(),
         ),
         (route) => false,
       );
@@ -92,7 +93,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => const ProfileScreen(),
+          builder: (context) => const HomeHage(),
         ),
         (route) => false,
       );
@@ -118,10 +119,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
                 style: AppFonts.s15w400,
               ),
               TextFormField(
+                textCapitalization: TextCapitalization.sentences,
                 controller: _userNameController,
                 keyboardType: TextInputType.name,
                 validator: (value) => _errorNameText,
-                textInputAction: TextInputAction.done,
+                textInputAction: TextInputAction.next,
                 onChanged: validateUserName,
                 decoration: InputDecoration(
                   hintText: 'Введите ваше имя',
@@ -142,6 +144,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                 style: AppFonts.s15w400,
               ),
               TextFormField(
+                textCapitalization: TextCapitalization.sentences,
                 controller: _userSurnameController,
                 keyboardType: TextInputType.name,
                 onChanged: validateUserSurname,

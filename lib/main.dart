@@ -1,3 +1,4 @@
+import 'package:ambulance/presentation/features/home_page/bottom_bar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ambulance/core/colors/app_colors.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
               ),
               scaffoldBackgroundColor: AppColors.white,
             ),
-            home: const SplashScreen(),
+            // home: const SplashScreen(),
+            home: const HomeHage(),
           );
         });
   }
