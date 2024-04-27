@@ -1,5 +1,4 @@
 import 'package:ambulance/core/colors/app_colors.dart';
-import 'package:ambulance/core/fonts/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
