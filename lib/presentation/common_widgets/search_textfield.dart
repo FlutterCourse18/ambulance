@@ -42,32 +42,33 @@ class _SearchTextFieldState extends State<SearchTextField> {
               fillColor: AppColors.grayC4.withOpacity(0.3),
               contentPadding:
                   EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-              // suffix: InkWell(
-              //   child: const Text('Очистить'),
-              //   onTap: () {
-              //     searchController.clear();
-              //     print(searchController.text);
-              //   },
-              // ),
+              suffix: InkWell(
+                child: const Text('Очистить'),
+                onTap: () {
+                  searchController.clear();
+                  print(searchController.text);
+                },
+              ),
               prefixIcon: const Icon(Icons.search),
               hintText: 'Поиск врача',
             ),
           ),
         ),
-        InkWell(
-          borderRadius: BorderRadius.circular(30.0),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(
-              'Очистить',
-              style: AppFonts.s14w600.copyWith(color: AppColors.gray75),
-            ),
-          ),
-          onTap: () {
-            searchController.clear();
-            // print(searchController.text);
-          },
-        )
+        // InkWell(
+        //   borderRadius: BorderRadius.circular(30.0),
+        //   child: Padding(
+        //     padding: const EdgeInsets.all(10.0),
+        //     child: Text(
+        //       'Очистить',
+        //       style: AppFonts.s14w600.copyWith(color: AppColors.gray75),
+        //     ),
+        //   ),
+        //   onTap: () {
+        //     searchController.clear();
+        //     // print(searchController.text);
+        //   },
+        // ),
+        SizedBox(width: 16.w)
       ],
     );
   }

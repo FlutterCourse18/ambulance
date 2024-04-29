@@ -48,6 +48,7 @@ class _ProfileTabsWidgetState extends State<ProfileTabsWidget>
           TabBar(
             controller: _tabController,
             labelColor: AppColors.blue,
+            labelPadding: const EdgeInsets.all(0),
             labelStyle: const TextStyle(fontWeight: FontWeight.w500),
             unselectedLabelColor: AppColors.blueTab.withOpacity(0.5),
             indicatorWeight: 3,
@@ -69,17 +70,18 @@ class _ProfileTabsWidgetState extends State<ProfileTabsWidget>
     );
   }
 
-  List<Widget> get myTabs {
-    return <Widget>[
+  List<Tab> get myTabs {
+    return <Tab>[
       Tab(
         text: 'Анализы',
         icon: SvgPicture.asset(
           AppSvg.dropper,
           colorFilter: ColorFilter.mode(
-              currentIndex == 0
-                  ? AppColors.blue
-                  : AppColors.blue.withOpacity(0.5),
-              BlendMode.srcIn),
+            currentIndex == 0
+                ? AppColors.blue
+                : AppColors.blue.withOpacity(0.5),
+            BlendMode.srcIn,
+          ),
         ),
       ),
       Tab(
@@ -87,10 +89,11 @@ class _ProfileTabsWidgetState extends State<ProfileTabsWidget>
         icon: SvgPicture.asset(
           AppSvg.collection,
           colorFilter: ColorFilter.mode(
-              currentIndex == 1
-                  ? AppColors.blue
-                  : AppColors.blue.withOpacity(0.5),
-              BlendMode.srcIn),
+            currentIndex == 1
+                ? AppColors.blue
+                : AppColors.blue.withOpacity(0.5),
+            BlendMode.srcIn,
+          ),
         ),
       ),
       Tab(
@@ -98,10 +101,11 @@ class _ProfileTabsWidgetState extends State<ProfileTabsWidget>
         icon: SvgPicture.asset(
           AppSvg.detail,
           colorFilter: ColorFilter.mode(
-              currentIndex == 2
-                  ? AppColors.blue
-                  : AppColors.blue.withOpacity(0.5),
-              BlendMode.srcIn),
+            currentIndex == 2
+                ? AppColors.blue
+                : AppColors.blue.withOpacity(0.5),
+            BlendMode.srcIn,
+          ),
         ),
       ),
     ];

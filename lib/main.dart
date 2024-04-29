@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
                 elevation: 1.h,
                 shadowColor: AppColors.black.withOpacity(0.5),
                 surfaceTintColor: AppColors.white,
+                backgroundColor: AppColors.white,
               ),
               scaffoldBackgroundColor: AppColors.white,
             ),

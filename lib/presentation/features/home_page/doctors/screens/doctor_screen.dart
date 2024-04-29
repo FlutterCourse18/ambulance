@@ -20,12 +20,13 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
       appBar: AppBar(
         elevation: 0.h,
         title: Text(
-          'Мой профиль',
+          'Доктора',
           style: AppFonts.s34w700,
         ),
         centerTitle: false,
         actions: [
           IconButton(
+            padding: const EdgeInsets.all(0),
             onPressed: () {},
             icon: SvgPicture.asset(AppSvg.bell),
           ),
@@ -33,7 +34,7 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(left: 16.0, top: 16.0),
         child: Column(
           children: [
             const SearchTextField(),

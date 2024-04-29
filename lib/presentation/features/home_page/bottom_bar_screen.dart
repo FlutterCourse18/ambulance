@@ -24,13 +24,13 @@ class _HomeHageState extends State<HomeHage> {
       child: DoctorsScreen(),
     ),
     const Center(
-      child: Text('2'),
+      child: Text('Статьи'),
     ),
     const Center(
-      child: Text('3'),
+      child: Text('Вызов'),
     ),
     const Center(
-      child: Text('4'),
+      child: Text('Мои доктора'),
     ),
     const ProfileScreen(),
   ];
@@ -91,11 +91,11 @@ class _HomeHageState extends State<HomeHage> {
       controller: _controller,
       screens: screens,
       items: _navBarsItems(),
-      navBarHeight: 60.h,
+      navBarHeight: 64.h,
       decoration: NavBarDecoration(
-          border: Border.all(color: AppColors.grayAF),
-          borderRadius: BorderRadius.circular(0),
-          colorBehindNavBar: AppColors.white),
+        borderRadius: BorderRadius.circular(0),
+        colorBehindNavBar: AppColors.white,
+      ),
       navBarStyle: NavBarStyle.style16,
     );
   }
