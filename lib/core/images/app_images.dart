@@ -18,4 +18,5 @@ abstract class AppSvg {
   static const String dropper = "assets/images/svg/dropper.svg";
   static const String detail = "assets/images/svg/detail.svg";
   static const String bookAdd = "assets/images/svg/book_add.svg";
+  static const String bell = "assets/images/svg/bell.svg";
 }
