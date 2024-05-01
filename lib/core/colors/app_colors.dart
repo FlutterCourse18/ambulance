@@ -11,6 +11,7 @@ abstract class AppColors {
   static const Color blueDisabled = Color(0xff4C84CE);
   static const Color black = Color(0xff000000);
   static const Color black3 = Color(0xff333333);
+  static const Color grayBackground = Color(0xffEFEFF3);
   static const Color grayAF = Color(0xffAFAFAF);
   static const Color gray75 = Color(0xff757575);
   static const Color gray7 = Color(0xff777777);

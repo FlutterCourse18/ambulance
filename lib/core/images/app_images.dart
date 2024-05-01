@@ -6,6 +6,7 @@ abstract class AppImages {
   static const String bigClipboard = "assets/images/png/big_clipboard.png";
   static const String curlPage = "assets/images/png/curl_page.png";
   static const String folder = "assets/images/png/folder.png";
+  static const String chopper = "assets/images/png/Chopper.webp";
 }
 
 abstract class AppSvg {
@@ -19,4 +20,11 @@ abstract class AppSvg {
   static const String detail = "assets/images/svg/detail.svg";
   static const String bookAdd = "assets/images/svg/book_add.svg";
   static const String bell = "assets/images/svg/bell.svg";
+  static const String comentary = "assets/images/svg/comentary.svg";
+  static const String star = "assets/images/svg/star.svg";
+}
+
+abstract class AppNetwork {
+  static const String chopper =
+      'https://static.wikia.nocookie.net/onepiece/images/e/e6/Tony_Tony_Chopper_Anime_Pre_Timeskip_Infobox.png/revision/latest?cb=20230906213030';
 }
