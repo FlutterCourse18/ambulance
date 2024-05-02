@@ -7,6 +7,7 @@ import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
 import 'package:ambulance/presentation/common_widgets/app_button.dart';
 import 'package:ambulance/presentation/features/authtorization/screens/registration_screen.dart';
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -138,9 +139,7 @@ class _ConfirmFormState extends State<ConfirmForm> {
             ),
           ),
         ),
-        SizedBox(
-          height: 25.h,
-        ),
+        addVerticalSpace(25),
         InkWell(
           onTap: generateCode,
           highlightColor: Colors.transparent,
@@ -154,9 +153,7 @@ class _ConfirmFormState extends State<ConfirmForm> {
             ),
           ),
         ),
-        SizedBox(
-          height: 85.h,
-        ),
+        addVerticalSpace(85),
         AppButton(
           title: 'Далее',
           onPressed: submitForm,

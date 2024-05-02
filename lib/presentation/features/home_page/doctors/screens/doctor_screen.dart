@@ -3,6 +3,7 @@ import 'package:ambulance/core/images/app_images.dart';
 import 'package:ambulance/presentation/common_widgets/search_textfield.dart';
 import 'package:ambulance/presentation/features/home_page/doctors/widgets/doctor_category_list.dart';
 import 'package:ambulance/presentation/features/home_page/doctors/widgets/doctors_list.dart';
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,13 +32,13 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
             onPressed: () {},
             icon: SvgPicture.asset(AppSvg.bell),
           ),
-          SizedBox(width: 8.w),
+          addHorizontalSpace(8),
         ],
       ),
       body: Column(
         children: [
           const SearchTextField(),
-          SizedBox(height: 20.h),
+          addVerticalSpace(20),
           const DoctorsCategoryList(),
           const DoctorsList()
         ],

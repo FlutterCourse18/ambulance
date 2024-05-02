@@ -1,7 +1,7 @@
 import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileData extends StatefulWidget {
@@ -34,9 +34,7 @@ class _ProfileDataState extends State<ProfileData> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: 16.h,
-        ),
+        addVerticalSpace(16),
         Text(
           '$userName $userSurname',
           style: AppFonts.s22w500,

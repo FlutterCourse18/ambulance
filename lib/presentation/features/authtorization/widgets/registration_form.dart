@@ -5,6 +5,7 @@ import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
 import 'package:ambulance/presentation/common_widgets/app_button.dart';
 import 'package:ambulance/presentation/features/home_page/bottom_bar_screen.dart';
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -135,9 +136,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 32.h,
-              ),
+              addVerticalSpace(32),
               Text(
                 'Фамилия',
                 style: AppFonts.s15w400,
@@ -161,9 +160,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 149.h,
-              ),
+              addVerticalSpace(149),
               // const Spacer(),
               AppButton(
                 title: 'Далее',

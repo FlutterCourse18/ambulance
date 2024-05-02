@@ -1,4 +1,5 @@
 import 'package:ambulance/core/colors/app_colors.dart';
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -69,7 +70,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
           //     // print(searchController.text);
           //   },
           // ),
-          SizedBox(width: 16.w)
+          addHorizontalSpace(16)
         ],
       ),
     );

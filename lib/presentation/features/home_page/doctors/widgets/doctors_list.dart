@@ -1,8 +1,8 @@
 import 'package:ambulance/core/colors/app_colors.dart';
 import 'package:ambulance/data/doctors_model.dart';
 import 'package:ambulance/presentation/features/home_page/doctors/widgets/doctor_card.dart';
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DoctorsList extends StatefulWidget {
   const DoctorsList({super.key});
@@ -24,9 +24,7 @@ class _DoctorsListState extends State<DoctorsList> {
           child: ListView.separated(
             itemBuilder: (contex, index) =>
                 DoctorCard(model: doctorsList[index]),
-            separatorBuilder: (context, index) => SizedBox(
-              height: 8.h,
-            ),
+            separatorBuilder: (context, index) => addVerticalSpace(8),
             itemCount: doctorsList.length,
           ),
         ),

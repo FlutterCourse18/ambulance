@@ -1,3 +1,4 @@
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ambulance/core/consts/app_consts.dart';
@@ -32,9 +33,7 @@ class OnBoardingScreen extends StatelessWidget {
               'Зачем нужен профиль?',
               style: AppFonts.s22w500,
             ),
-            SizedBox(
-              height: 25.h,
-            ),
+            addVerticalSpace(25),
             Column(
               children: OnBoardingItemData.data
                   .map(

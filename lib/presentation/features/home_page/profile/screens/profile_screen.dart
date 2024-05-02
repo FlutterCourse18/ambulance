@@ -5,6 +5,7 @@ import 'package:ambulance/presentation/features/authtorization/screens/login_scr
 import 'package:ambulance/presentation/features/home_page/profile/widgets/circle_avatar_picker.dart';
 import 'package:ambulance/presentation/features/home_page/profile/widgets/profile_data.dart';
 import 'package:ambulance/presentation/features/home_page/profile/widgets/profile_tabs.dart';
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -68,7 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               color: AppColors.black,
             ),
           ),
-          SizedBox(width: 16.w)
+          addHorizontalSpace(16),
         ],
       ),
       body: Padding(
@@ -78,7 +79,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               const CircleAvatarPicker(),
               const ProfileData(),
-              SizedBox(height: 13.h),
+              addVerticalSpace(13),
               const ProfileTabsWidget(),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:ambulance/presentation/features/authtorization/widgets/phone_form.dart';
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
@@ -28,9 +29,7 @@ class LogInScreen extends StatelessWidget {
                 'Войти',
                 style: AppFonts.s34w700,
               ),
-              SizedBox(
-                height: 50.h,
-              ),
+              addVerticalSpace(50),
               const PhoneForm(),
             ],
           ),

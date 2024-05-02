@@ -7,6 +7,7 @@ import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
 import 'package:ambulance/presentation/common_widgets/app_button.dart';
 import 'package:ambulance/presentation/features/authtorization/screens/confirm_screen.dart';
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -127,16 +128,12 @@ class _PhoneFormState extends State<PhoneForm> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 30.h,
-            ),
+            addVerticalSpace(30),
             Text(
               'На указанный вами номер придет однократное СМС-сообщение с кодом подтверждения.',
               style: AppFonts.s15w400,
             ),
-            SizedBox(
-              height: 108.h,
-            ),
+            addVerticalSpace(108),
             AppButton(
               title: 'Далее',
               onPressed: _phoneController.text.isNotEmpty ? _submitForm : null,

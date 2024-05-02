@@ -1,3 +1,4 @@
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
@@ -23,9 +24,7 @@ class OnBoardingItemWidget extends StatelessWidget {
             icon,
             height: 32.h,
           ),
-          SizedBox(
-            width: 18.w,
-          ),
+          addHorizontalSpace(18),
           Flexible(
             child: Text(
               text,

@@ -2,6 +2,7 @@ import 'package:ambulance/core/colors/app_colors.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
 import 'package:ambulance/core/images/app_images.dart';
 import 'package:ambulance/data/doctors_model.dart';
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,9 +27,7 @@ class DoctorCard extends StatelessWidget {
             radius: 27.0,
             backgroundImage: AssetImage(AppImages.chopper),
           ),
-          SizedBox(
-            width: 10.w,
-          ),
+          addHorizontalSpace(10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -37,9 +36,7 @@ class DoctorCard extends StatelessWidget {
                 model.categories ?? '',
                 style: AppFonts.s15w400.copyWith(color: AppColors.gray75),
               ),
-              SizedBox(
-                height: 6.h,
-              ),
+              addVerticalSpace(6),
               Text(
                 model.name ?? '',
                 style: AppFonts.s15w600.copyWith(color: AppColors.black),
@@ -60,7 +57,7 @@ class DoctorCard extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(width: 24.w),
+          addHorizontalSpace(24),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,

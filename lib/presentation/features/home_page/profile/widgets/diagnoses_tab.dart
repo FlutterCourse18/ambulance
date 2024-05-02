@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:ambulance/core/fonts/app_fonts.dart';
 import 'package:ambulance/core/images/app_images.dart';
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,17 +41,13 @@ class DiagnosesTab extends StatelessWidget {
             width: 105.w,
             height: 105.h,
           ),
-          SizedBox(
-            height: 23.h,
-          ),
+          addVerticalSpace(23),
           Text(
             'У вас пока нет добавленных диагнозов',
             style: AppFonts.s15w500,
             textAlign: TextAlign.center,
           ),
-          SizedBox(
-            height: 33.h,
-          ),
+          addVerticalSpace(33),
           TextButton(
             onPressed: () {
               pickFiles(context);
@@ -59,7 +56,7 @@ class DiagnosesTab extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SvgPicture.asset(AppSvg.bookAdd),
-                SizedBox(width: 8.w),
+                addHorizontalSpace(8),
                 Text(
                   "Добавить документ",
                   style: AppFonts.s15w500,

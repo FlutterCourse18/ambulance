@@ -3,6 +3,7 @@
 import 'package:ambulance/core/fonts/app_fonts.dart';
 import 'package:ambulance/presentation/common_widgets/my_back_button.dart';
 import 'package:ambulance/presentation/features/authtorization/widgets/confirm_form.dart';
+import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,9 +35,7 @@ class _NumberConfirmScreenState extends State<NumberConfirmScreen> {
                 'Введите код из смс',
                 style: AppFonts.s22w500,
               ),
-              SizedBox(
-                height: 130.h,
-              ),
+              addVerticalSpace(130),
               const ConfirmForm(),
             ],
           ),
