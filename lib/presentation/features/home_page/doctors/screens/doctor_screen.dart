@@ -28,6 +28,7 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.h,
+        shadowColor: Colors.transparent,
         title: Text(
           'Доктора',
           style: AppFonts.s34w700,

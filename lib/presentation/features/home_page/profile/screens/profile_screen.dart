@@ -56,6 +56,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.h,
+        shadowColor: Colors.transparent,
         title: Text(
           'Мой профиль',
           style: AppFonts.s34w700,
