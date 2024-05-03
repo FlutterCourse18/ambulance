@@ -5,7 +5,6 @@ import 'package:ambulance/core/fonts/app_fonts.dart';
 import 'package:ambulance/core/images/app_images.dart';
 import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class DoctorsSortButton extends StatefulWidget {

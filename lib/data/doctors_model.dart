@@ -33,13 +33,86 @@ abstract class DoctorsData {
     "Стоматолог",
     "Педиатр",
     "Невролог",
-    "Гинеколог",
-    "Уролог",
-    "Лор",
     "Кардиолог"
   ];
 
   static List<DoctorsModel> doctors = [
+    DoctorsModel(
+      name: "Чынгыз Акылбеков",
+      comments: [
+        'Спасибо за операцию',
+        'Профессионал',
+        'Отличный доктор',
+        'Благодарен',
+        'Рекомендую всем',
+      ],
+      grade: 4.7,
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      categories: 'Стоматолог',
+      contacts: Contacts(
+        adress: 'г. Бишкек, ул. Чуй, 77, клиника “Медикал Спринт”',
+        phone: '+996 555 77 88 99',
+        email: 'kozlov.igor@example.com',
+      ),
+    ),
+    DoctorsModel(
+      name: "Рафаэль Шабутдинов",
+      comments: [
+        'Спасибо за операцию',
+        'Профессионал',
+        'Отличный доктор',
+        'Благодарен',
+        'Рекомендую всем',
+      ],
+      grade: 4.7,
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      categories: 'Невролог',
+      contacts: Contacts(
+        adress: 'г. Бишкек, ул. Чуй, 77, клиника “Медикал Спринт”',
+        phone: '+996 555 77 88 99',
+        email: 'kozlov.igor@example.com',
+      ),
+    ),
+    DoctorsModel(
+      name: "Рината Сафиуллина",
+      comments: [
+        'Спасибо за операцию',
+        'Профессионал',
+        'Отличный доктор',
+        'Благодарен',
+        'Рекомендую всем',
+      ],
+      grade: 4.7,
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      categories: 'Педиатр',
+      contacts: Contacts(
+        adress: 'г. Бишкек, ул. Чуй, 77, клиника “Медикал Спринт”',
+        phone: '+996 555 77 88 99',
+        email: 'kozlov.igor@example.com',
+      ),
+    ),
+    DoctorsModel(
+      name: "Алексей Захаренко",
+      comments: [
+        'Спасибо за операцию',
+        'Профессионал',
+        'Отличный доктор',
+        'Благодарен',
+        'Рекомендую всем',
+      ],
+      grade: 4.7,
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      categories: 'Хирург',
+      contacts: Contacts(
+        adress: 'г. Бишкек, ул. Чуй, 77, клиника “Медикал Спринт”',
+        phone: '+996 555 77 88 99',
+        email: 'kozlov.igor@example.com',
+      ),
+    ),
     DoctorsModel(
       name: "Иванов Петров",
       comments: [
@@ -60,6 +133,82 @@ abstract class DoctorsData {
       ),
     ),
     DoctorsModel(
+      name: "Павлов Иванов",
+      comments: [
+        'Отличный врач',
+        'Спасибо за помощь',
+        'Очень внимательный',
+        'Очень доволен',
+        'Очень рекомендую',
+      ],
+      grade: 4.5,
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      categories: 'Терапевт',
+      contacts: Contacts(
+        adress: 'г. Бишкек, ул. Советская, 50, клиника “Медикал Эстетик”',
+        phone: '+996 555 11 22 33',
+        email: 'pavlov.iv@example.com',
+      ),
+    ),
+    DoctorsModel(
+      name: "Сидоров Александр",
+      comments: [
+        'Врач высокого класса',
+        'Очень доволен приемом',
+        'Рекомендую всем',
+        'Спасибо за операцию',
+        'Профессионал своего дела',
+      ],
+      grade: 4.9,
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      categories: 'Хирург',
+      contacts: Contacts(
+        adress: 'г. Бишкек, ул. Ленина, 11, клиника “Медикал Формула”',
+        phone: '+996 555 44 55 66',
+        email: 'sidorov.alex@example.com',
+      ),
+    ),
+    DoctorsModel(
+      name: "Айбек Сатыбалдиев",
+      comments: [
+        'Врач высокого класса',
+        'Очень доволен приемом',
+        'Рекомендую всем',
+        'Спасибо за операцию',
+        'Профессионал своего дела',
+      ],
+      grade: 4.9,
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      categories: 'Стоматолог',
+      contacts: Contacts(
+        adress: 'г. Бишкек, ул. Ленина, 11, клиника “Медикал Формула”',
+        phone: '+996 555 44 55 66',
+        email: 'sidorov.alex@example.com',
+      ),
+    ),
+    DoctorsModel(
+      name: "Козлов Игорь",
+      comments: [
+        'Спасибо за операцию',
+        'Профессионал',
+        'Отличный доктор',
+        'Благодарен',
+        'Рекомендую всем',
+      ],
+      grade: 4.7,
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      categories: 'Педиатр',
+      contacts: Contacts(
+        adress: 'г. Бишкек, ул. Чуй, 77, клиника “Медикал Спринт”',
+        phone: '+996 555 77 88 99',
+        email: 'kozlov.igor@example.com',
+      ),
+    ),
+    DoctorsModel(
       name: "Александрова Мария",
       comments: [
         'Отличный специалист!',
@@ -67,7 +216,8 @@ abstract class DoctorsData {
         'Очень довольна приемом',
       ],
       grade: 4.9,
-      image: 'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
       categories: 'Терапевт',
       contacts: Contacts(
         adress: 'г. Москва, ул. Ленина, 15, клиника "Здоровье"',
@@ -82,7 +232,8 @@ abstract class DoctorsData {
         'Все вопросы подробно разъяснил',
       ],
       grade: 4.5,
-      image: 'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
       categories: 'Кардиолог',
       contacts: Contacts(
         adress: 'г. Москва, ул. Ленина, д. 10',
@@ -97,7 +248,8 @@ abstract class DoctorsData {
         'Быстро поставила диагноз',
       ],
       grade: 4.8,
-      image: 'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
       categories: 'Терапевт',
       contacts: Contacts(
         adress: 'г. Санкт-Петербург, ул. Московская, д. 20',
@@ -113,8 +265,9 @@ abstract class DoctorsData {
         'Очень доволен результатом',
       ],
       grade: 4.9,
-      image: 'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
-      categories: 'Офтальмолог',
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      categories: 'Окулист',
       contacts: Contacts(
         adress: 'г. Екатеринбург, ул. Пушкина, д. 30',
         phone: '+7 999 987 65 43',
@@ -129,7 +282,8 @@ abstract class DoctorsData {
         'Рекомендую всем!',
       ],
       grade: 4.7,
-      image: 'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
+      image:
+          'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843',
       categories: 'Хирург',
       contacts: Contacts(
         adress: 'г. Новосибирск, ул. Ленина, д. 50',
