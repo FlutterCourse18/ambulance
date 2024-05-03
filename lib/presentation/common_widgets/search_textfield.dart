@@ -1,5 +1,6 @@
+// ignore_for_file: avoid_print
+
 import 'package:ambulance/core/colors/app_colors.dart';
-import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,58 +21,35 @@ class _SearchTextFieldState extends State<SearchTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, top: 16),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextField(
-              controller: searchController,
-              onSubmitted: onSubmitted,
-              keyboardType: TextInputType.text,
-              textCapitalization: TextCapitalization.sentences,
-              decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide:
-                      const BorderSide(width: 1, color: Colors.transparent),
-                  borderRadius: BorderRadius.circular(16.r),
-                ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide:
-                      const BorderSide(width: 1, color: Colors.transparent),
-                  borderRadius: BorderRadius.circular(16.r),
-                ),
-                filled: true,
-                fillColor: AppColors.grayC4.withOpacity(0.3),
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-                suffix: InkWell(
-                  child: const Text('Очистить'),
-                  onTap: () {
-                    searchController.clear();
-                    print(searchController.text);
-                  },
-                ),
-                prefixIcon: const Icon(Icons.search),
-                hintText: 'Поиск врача',
-              ),
-            ),
+      padding: const EdgeInsets.all(16),
+      child: TextField(
+        controller: searchController,
+        onSubmitted: onSubmitted,
+        keyboardType: TextInputType.text,
+        textCapitalization: TextCapitalization.sentences,
+        decoration: InputDecoration(
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(width: 1, color: Colors.transparent),
+            borderRadius: BorderRadius.circular(16.r),
           ),
-          // InkWell(
-          //   borderRadius: BorderRadius.circular(30.0),
-          //   child: Padding(
-          //     padding: const EdgeInsets.all(10.0),
-          //     child: Text(
-          //       'Очистить',
-          //       style: AppFonts.s14w600.copyWith(color: AppColors.gray75),
-          //     ),
-          //   ),
-          //   onTap: () {
-          //     searchController.clear();
-          //     // print(searchController.text);
-          //   },
-          // ),
-          addHorizontalSpace(16)
-        ],
+          enabledBorder: UnderlineInputBorder(
+            borderSide: const BorderSide(width: 1, color: Colors.transparent),
+            borderRadius: BorderRadius.circular(16.r),
+          ),
+          filled: true,
+          fillColor: AppColors.grayC4.withOpacity(0.3),
+          contentPadding:
+              EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+          suffix: InkWell(
+            child: const Text('Очистить'),
+            onTap: () {
+              searchController.clear();
+              print(searchController.text);
+            },
+          ),
+          prefixIcon: const Icon(Icons.search),
+          hintText: 'Поиск врача',
+        ),
       ),
     );
   }

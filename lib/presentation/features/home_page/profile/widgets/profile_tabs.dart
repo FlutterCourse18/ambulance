@@ -70,6 +70,7 @@ class _ProfileTabsWidgetState extends State<ProfileTabsWidget>
     );
   }
 
+// TODO: slow animation tab active 
   List<Tab> get myTabs {
     return <Tab>[
       Tab(

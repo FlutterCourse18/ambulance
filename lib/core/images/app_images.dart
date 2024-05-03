@@ -22,6 +22,7 @@ abstract class AppSvg {
   static const String bell = "assets/images/svg/bell.svg";
   static const String comentary = "assets/images/svg/comentary.svg";
   static const String star = "assets/images/svg/star.svg";
+  static const String sort = "assets/images/svg/sort.svg";
 }
 
 abstract class AppNetwork {

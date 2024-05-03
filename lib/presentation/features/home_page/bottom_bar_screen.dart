@@ -84,6 +84,8 @@ class _HomeHageState extends State<HomeHage> {
     ];
   }
 
+// TODO: PersistentTabView Navbar does not disappear when the keyboard appears search textField
+
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(

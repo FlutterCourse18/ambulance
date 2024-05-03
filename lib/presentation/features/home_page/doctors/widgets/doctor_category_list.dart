@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DoctorsCategoryList extends StatefulWidget {
-  const DoctorsCategoryList({super.key});
+  final Function(String) onSelectCategory;
+  const DoctorsCategoryList({super.key, required this.onSelectCategory});
 
   @override
   State<DoctorsCategoryList> createState() => _DoctorsCategoryListState();
 }
 
 class _DoctorsCategoryListState extends State<DoctorsCategoryList> {
-  String selectedElement = '';
+  String _selectedCategory = 'Все';
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +25,11 @@ class _DoctorsCategoryListState extends State<DoctorsCategoryList> {
           itemCount: DoctorsData.categories.length,
           itemBuilder: (context, index) => DoctorCotegoryWidget(
             onTap: () {
-              selectedElement = DoctorsData.categories[index];
+              _selectedCategory = DoctorsData.categories[index];
+              widget.onSelectCategory(_selectedCategory);
               setState(() {});
             },
-            isSelected: selectedElement == DoctorsData.categories[index],
+            isSelected: _selectedCategory == DoctorsData.categories[index],
             title: DoctorsData.categories[index],
           ),
         ),

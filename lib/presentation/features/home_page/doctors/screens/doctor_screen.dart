@@ -16,6 +16,13 @@ class DoctorsScreen extends StatefulWidget {
 }
 
 class _DoctorsScreenState extends State<DoctorsScreen> {
+  String selectedCategory = 'Все';
+
+  void updateSelectedCategory(String category) {
+    selectedCategory = category;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +45,8 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
       body: Column(
         children: [
           const SearchTextField(),
-          addVerticalSpace(20),
-          const DoctorsCategoryList(),
-          const DoctorsList()
+          DoctorsCategoryList(onSelectCategory: updateSelectedCategory),
+          DoctorsList(selectedCategory: selectedCategory)
         ],
       ),
     );
