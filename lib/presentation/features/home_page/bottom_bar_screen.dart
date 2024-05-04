@@ -84,14 +84,16 @@ class _HomeHageState extends State<HomeHage> {
     ];
   }
 
-// TODO: PersistentTabView Navbar does not disappear when the keyboard appears search textField
-
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
       controller: _controller,
       screens: screens,
+      hideNavigationBar:
+          MediaQuery.of(context).viewInsets.bottom > 0 ? true : false,
+      // resizeToAvoidBottomInset: false,
+      // hideNavigationBarWhenKeyboardShows: true,
       items: _navBarsItems(),
       navBarHeight: 64.h,
       decoration: NavBarDecoration(

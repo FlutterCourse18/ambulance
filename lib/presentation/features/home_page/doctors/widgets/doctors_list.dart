@@ -52,10 +52,9 @@ class _DoctorsListState extends State<DoctorsList> {
               color: AppColors.grayBackground,
               child: Padding(
                 padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
-                child: ListView.separated(
+                child: ListView.builder(
                   itemBuilder: (contex, index) =>
                       DoctorCard(model: filteredDoctors[index]),
-                  separatorBuilder: (context, index) => addVerticalSpace(8),
                   itemCount: filteredDoctors.length,
                 ),
               ),

@@ -13,24 +13,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(375, 812),
-        builder: (context, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              fontFamily: 'SF Pro Display',
-              colorScheme:
-                  ThemeData().colorScheme.copyWith(primary: AppColors.blue),
-              appBarTheme: AppBarTheme(
-                elevation: 1.h,
-                shadowColor: AppColors.black.withOpacity(0.5),
-                surfaceTintColor: AppColors.white,
-                backgroundColor: AppColors.white,
-              ),
-              scaffoldBackgroundColor: AppColors.white,
+      designSize: const Size(375, 812),
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            fontFamily: 'SF Pro Display',
+            colorScheme:
+                ThemeData().colorScheme.copyWith(primary: AppColors.blue),
+            appBarTheme: AppBarTheme(
+              elevation: 1.h,
+              shadowColor: AppColors.black.withOpacity(0.5),
+              surfaceTintColor: AppColors.white,
+              backgroundColor: AppColors.white,
             ),
-            home: const SplashScreen(),
-          );
-        });
+            scaffoldBackgroundColor: AppColors.white,
+          ),
+          home: const SplashScreen(),
+        );
+      },
+    );
   }
 }

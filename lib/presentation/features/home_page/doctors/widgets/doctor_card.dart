@@ -15,6 +15,7 @@ class DoctorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(bottom: 8),
       height: 76.h,
       decoration: ShapeDecoration(
         color: Colors.white,
