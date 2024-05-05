@@ -41,8 +41,7 @@ class _ProfileTabsWidgetState extends State<ProfileTabsWidget>
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.5,
+    return Expanded(
       child: Column(
         children: [
           TabBar(
@@ -70,7 +69,7 @@ class _ProfileTabsWidgetState extends State<ProfileTabsWidget>
     );
   }
 
-// TODO: slow animation tab active 
+// TODO: slow animation tab active  ------- ANSWER add ur custom icons to ttf format and add ass font and create Appconst for ur icons
   List<Tab> get myTabs {
     return <Tab>[
       Tab(

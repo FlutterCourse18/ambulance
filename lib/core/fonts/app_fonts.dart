@@ -38,6 +38,10 @@ abstract class AppFonts {
     fontSize: 18.sp,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle s18w500 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+  );
   static TextStyle s18w600 = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeight.w600,
