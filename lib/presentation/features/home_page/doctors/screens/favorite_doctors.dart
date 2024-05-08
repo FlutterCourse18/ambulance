@@ -3,7 +3,6 @@ import 'package:ambulance/core/images/app_images.dart';
 import 'package:ambulance/data/doctors_model.dart';
 import 'package:ambulance/presentation/common_widgets/search_textfield.dart';
 import 'package:ambulance/presentation/features/home_page/doctors/widgets/doctor_category_list.dart';
-import 'package:ambulance/presentation/features/home_page/doctors/widgets/doctors_list.dart';
 import 'package:ambulance/presentation/features/home_page/doctors/widgets/favorite_doctors_list.dart';
 import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
