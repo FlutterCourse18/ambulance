@@ -1,11 +1,13 @@
 import 'package:ambulance/core/colors/app_colors.dart';
+import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
-import 'package:ambulance/core/images/app_images.dart';
 import 'package:ambulance/data/doctors_model.dart';
 import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+// TODO: create a separate widget fom every tabviews
 
 class DoctorDatailTabs extends StatefulWidget {
   const DoctorDatailTabs(
@@ -22,6 +24,16 @@ class _DoctorDatailTabsState extends State<DoctorDatailTabs>
   String formatedDate = DateTime.now().format('d M Y');
   final TextEditingController _controller = TextEditingController();
 
+  void onSubmit() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String name = prefs.getString(AppConsts.userName) ?? '';
+    final String surname = prefs.getString(AppConsts.userSurname) ?? '';
+    widget.doctorsModel.comments
+        ?.add(Comments(name: '$name ' '$surname', comment: _controller.text));
+    _controller.clear();
+    setState(() {});
+  }
+
   List<Tab> tabs = [
     const Tab(
       text: 'О докторе',
@@ -34,127 +46,6 @@ class _DoctorDatailTabsState extends State<DoctorDatailTabs>
     const Tab(
       text: 'Отзывы',
       icon: Icon(Icons.comment_rounded),
-    ),
-  ];
-
-// TODO: create a separate widget fom every tabviews
-
-  late List<Widget> tabViews = [
-    SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 16.h),
-        child: Text(
-          '${widget.doctorsModel.about}',
-          style: AppFonts.s18w400,
-        ),
-      ),
-    ),
-    Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const Icon(Icons.phone),
-              addHorizontalSpace(19),
-              Text(
-                '${widget.doctorsModel.contacts?.phone}',
-                style: AppFonts.s18w400,
-              ),
-            ],
-          ),
-          addHorizontalSpace(8),
-          const Divider(),
-          addHorizontalSpace(16),
-          Row(
-            children: [
-              const Icon(Icons.location_pin),
-              addHorizontalSpace(19),
-              Expanded(
-                child: Text(
-                  '${widget.doctorsModel.contacts?.adress}',
-                  style: AppFonts.s18w400,
-                  softWrap: true,
-                  textAlign: TextAlign.left,
-                ),
-              ),
-            ],
-          ),
-          addHorizontalSpace(8),
-          const Divider(
-            indent: 20,
-          ),
-          addHorizontalSpace(16),
-          Row(
-            children: [
-              const Icon(Icons.email),
-              addHorizontalSpace(19),
-              Text(
-                '${widget.doctorsModel.contacts?.email}',
-                style: AppFonts.s18w400,
-              ),
-            ],
-          ),
-        ],
-      ),
-    ),
-    // TODO: ask for clear code with !
-    Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.h),
-      child: Column(
-        children: [
-          Expanded(
-            child: ListView.separated(
-              itemBuilder: (context, index) => Row(
-                children: [
-                  Column(
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: const AssetImage(AppImages.chopper),
-                        radius: 20.r,
-                      )
-                    ],
-                  ),
-                  addHorizontalSpace(13),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('secret user', style: AppFonts.s18w500),
-                      Text('${widget.doctorsModel.comments?[index]}'),
-                      Text(formatedDate)
-                    ],
-                  ),
-                  addVerticalSpace(24),
-                ],
-              ),
-              separatorBuilder: (context, index) => addVerticalSpace(16),
-              itemCount: widget.doctorsModel.comments?.length ?? 0,
-            ),
-          ),
-          addVerticalSpace(12),
-          TextField(
-            onSubmitted: (value) {
-              widget.doctorsModel.comments?.add(value);
-              print('thx: ${widget.doctorsModel.comments?.last}');
-              _controller.clear();
-              setState(() {});
-            },
-            controller: _controller,
-            decoration: InputDecoration(
-              suffixIcon: InkWell(
-                  onTap: () {
-                    widget.doctorsModel.comments?.add(_controller.text);
-                    _controller.clear();
-                    setState(() {});
-                  },
-                  child: const Icon(Icons.send)),
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(40.r))),
-            ),
-          ),
-        ],
-      ),
     ),
   ];
 
@@ -172,9 +63,9 @@ class _DoctorDatailTabsState extends State<DoctorDatailTabs>
 
   @override
   void dispose() {
-    super.dispose();
     _tabController.dispose();
     _tabController.removeListener(showPersistButton);
+    super.dispose();
   }
 
   @override
@@ -200,7 +91,130 @@ class _DoctorDatailTabsState extends State<DoctorDatailTabs>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: tabViews,
+              children: [
+                SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16.h),
+                    child: Text(
+                      '${widget.doctorsModel.about}',
+                      style: AppFonts.s18w400,
+                    ),
+                  ),
+                ),
+                SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16.h),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(Icons.phone),
+                            addHorizontalSpace(19),
+                            Column(
+                              children: widget.doctorsModel.contacts!.phone!
+                                  .map(
+                                    (e) => Text(
+                                      e,
+                                      style: AppFonts.s18w400,
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          ],
+                        ),
+                        addHorizontalSpace(8),
+                        const Divider(),
+                        addHorizontalSpace(16),
+                        Row(
+                          children: [
+                            const Icon(Icons.location_pin),
+                            addHorizontalSpace(19),
+                            Expanded(
+                              child: Text(
+                                '${widget.doctorsModel.contacts?.adress}',
+                                style: AppFonts.s18w400,
+                                softWrap: true,
+                                textAlign: TextAlign.left,
+                              ),
+                            ),
+                          ],
+                        ),
+                        addHorizontalSpace(8),
+                        const Divider(
+                          indent: 20,
+                        ),
+                        addHorizontalSpace(16),
+                        Row(
+                          children: [
+                            const Icon(Icons.email),
+                            addHorizontalSpace(19),
+                            Text(
+                              '${widget.doctorsModel.contacts?.email}',
+                              style: AppFonts.s18w400,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16.h),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: ListView.separated(
+                          itemBuilder: (context, index) => Row(
+                            children: [
+                              Column(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 20.r,
+                                    child: const Icon(Icons.person_outline),
+                                  )
+                                ],
+                              ),
+                              addHorizontalSpace(13),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                      '${widget.doctorsModel.comments!.reversed.toList()[index].name}',
+                                      style: AppFonts.s18w500),
+                                  Text(
+                                      '${widget.doctorsModel.comments!.reversed.toList()[index].comment}'),
+                                  Text(formatedDate)
+                                ],
+                              ),
+                              addVerticalSpace(24),
+                            ],
+                          ),
+                          separatorBuilder: (context, index) =>
+                              addVerticalSpace(16),
+                          itemCount: widget.doctorsModel.comments?.length ?? 0,
+                        ),
+                      ),
+                      addVerticalSpace(12),
+                      TextField(
+                        onSubmitted: (value) {
+                          onSubmit();
+                        },
+                        controller: _controller,
+                        decoration: InputDecoration(
+                          suffixIcon: InkWell(
+                            onTap: onSubmit,
+                            child: const Icon(Icons.send),
+                          ),
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(40.r))),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ],

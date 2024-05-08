@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_print
 
+import 'package:ambulance/core/colors/app_colors.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
+import 'package:ambulance/core/images/app_images.dart';
 import 'package:ambulance/data/doctors_model.dart';
 import 'package:ambulance/presentation/common_widgets/app_button.dart';
 import 'package:ambulance/presentation/common_widgets/my_back_button.dart';
@@ -9,6 +11,7 @@ import 'package:ambulance/presentation/features/home_page/doctors/widgets/doctor
 import 'package:ambulance/utils/sized_box_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class DoctorsDetail extends StatefulWidget {
   const DoctorsDetail({super.key, required this.doctorsModel});
@@ -47,6 +50,23 @@ class _DoctorsDetailState extends State<DoctorsDetail> {
           : null,
       appBar: AppBar(
         leading: const MyBackButton(),
+        actions: [
+          InkWell(
+            onTap: () {
+              widget.doctorsModel.isFavorite = !widget.doctorsModel.isFavorite!;
+              print(widget.doctorsModel.isFavorite);
+              setState(() {});
+            },
+            child: SvgPicture.asset(
+              AppSvg.favorite,
+              // ignore: deprecated_member_use
+              color: widget.doctorsModel.isFavorite ?? false
+                  ? AppColors.blue
+                  : AppColors.grayAF,
+            ),
+          ),
+          addHorizontalSpace(16)
+        ],
         title: Text(
           widget.doctorsModel.name ?? '',
           style: AppFonts.s17w600,

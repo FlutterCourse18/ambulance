@@ -1,7 +1,9 @@
 import 'package:ambulance/core/colors/app_colors.dart';
 import 'package:ambulance/core/consts/app_consts.dart';
 import 'package:ambulance/core/fonts/app_fonts.dart';
+import 'package:ambulance/presentation/features/home_page/articles/screens/articles_screen.dart';
 import 'package:ambulance/presentation/features/home_page/doctors/screens/doctor_screen.dart';
+import 'package:ambulance/presentation/features/home_page/doctors/screens/favorite_doctors.dart';
 import 'package:ambulance/presentation/features/home_page/profile/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,13 +26,13 @@ class _HomeHageState extends State<HomeHage> {
       child: DoctorsScreen(),
     ),
     const Center(
-      child: Text('Статьи'),
+      child: ArticlesScreen(),
     ),
     const Center(
       child: Text('Вызов'),
     ),
     const Center(
-      child: Text('Мои доктора'),
+      child: FavoriteDoctors(),
     ),
     const ProfileScreen(),
   ];

@@ -5,25 +5,26 @@ import 'package:ambulance/presentation/features/home_page/doctors/widgets/doctor
 import 'package:ambulance/presentation/features/home_page/doctors/widgets/doctors_sort_button.dart';
 import 'package:flutter/material.dart';
 
-class DoctorsList extends StatefulWidget {
-  const DoctorsList({
+class FavoriteDoctorsList extends StatefulWidget {
+  const FavoriteDoctorsList({
     super.key,
     required this.selectedCategory,
   });
 
   final String selectedCategory;
   @override
-  State<DoctorsList> createState() => _DoctorsListState();
+  State<FavoriteDoctorsList> createState() => _FavoriteDoctorsListState();
 }
 
-class _DoctorsListState extends State<DoctorsList> {
-  final List<DoctorsModel> _doctors = DoctorsData.doctors;
+class _FavoriteDoctorsListState extends State<FavoriteDoctorsList> {
+  List<DoctorsModel> doctors =
+      DoctorsData.doctors.where((doctor) => doctor.isFavorite == true).toList();
   bool _sortAscending = true;
   List<DoctorsModel> get sortedDoctors {
     if (_sortAscending) {
-      return _doctors.toList()..sort((a, b) => a.name!.compareTo(b.name!));
+      return doctors.toList()..sort((a, b) => a.name!.compareTo(b.name!));
     } else {
-      return _doctors.toList()..sort((a, b) => b.name!.compareTo(a.name!));
+      return doctors.toList()..sort((a, b) => b.name!.compareTo(a.name!));
     }
   }
 
