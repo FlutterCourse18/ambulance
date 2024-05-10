@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HomeHage extends StatefulWidget {
   const HomeHage({super.key});
@@ -59,6 +60,7 @@ class _HomeHageState extends State<HomeHage> {
         iconSize: 28,
         activeColorPrimary: AppColors.blue,
         inactiveColorPrimary: AppColors.blue,
+        onPressed: (context) => launchUrlString("tel://103"),
         icon: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

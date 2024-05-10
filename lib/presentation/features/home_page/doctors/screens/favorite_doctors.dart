@@ -32,7 +32,7 @@ class _FavoriteDoctorsState extends State<FavoriteDoctors> {
         elevation: 0.h,
         shadowColor: Colors.transparent,
         title: Text(
-          'Доктора',
+          'Мои доктора',
           style: AppFonts.s34w700,
         ),
         centerTitle: false,
