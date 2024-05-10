@@ -26,6 +26,10 @@ abstract class AppFonts {
     fontSize: 22.sp,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle s24w500 = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w500,
+  );
   static TextStyle s15w400 = TextStyle(
     fontSize: 15.sp,
     fontWeight: FontWeight.w400,
@@ -41,6 +45,10 @@ abstract class AppFonts {
   static TextStyle s14w600 = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
+  );
+  static TextStyle s13w400 = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w400,
   );
   static TextStyle s18w400 = TextStyle(
     fontSize: 18.sp,

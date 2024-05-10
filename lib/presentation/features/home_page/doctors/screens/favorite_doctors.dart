@@ -48,6 +48,7 @@ class _FavoriteDoctorsState extends State<FavoriteDoctors> {
       body: Column(
         children: [
           const SearchTextField(),
+          // addVerticalSpace(16),
           DoctorsCategoryList(onSelectCategory: updateSelectedCategory),
           FavoriteDoctorsList(selectedCategory: selectedCategory)
         ],
